@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 464.08
+margin_top = 278.462
+margin_right = 550.08
+margin_bottom = 312.462
+text = "Hello"
+clip_text = true
