@@ -15,16 +15,16 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Test1"
-run/main_scene="res://Game.tscn"
+config/name="DefenseGame"
+run/main_scene="res://Tests/Follow_movment.tscn"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=640
-window/size/height=480
+window/size/width=800
 window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 
@@ -49,9 +49,16 @@ texture={
 "svg/scale": 1.0
 }
 
+[input]
+
+Y={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":89,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
