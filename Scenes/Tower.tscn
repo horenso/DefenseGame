@@ -1,26 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Tower.gd" type="Script" id=1]
-[ext_resource path="res://Art/Towers/done2.png" type="Texture" id=2]
+[ext_resource path="res://Art/Towers/tower_1_background.png" type="Texture" id=2]
+[ext_resource path="res://Art/Towers/tower_1_top.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.9513
 
-[node name="rotation_test_2" type="Node2D"]
+[node name="Tower" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="done" type="Sprite" parent="."]
+[node name="background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-hframes = 9
+
+[node name="top" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="Label" type="Label" parent="."]
+margin_left = 5.14399
+margin_top = 8.85272
+margin_right = 45.144
+margin_bottom = 22.8527
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 16.0
 autostart = true
 
 [node name="range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
 position = Vector2( 0.5, -1.5 )

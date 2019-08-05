@@ -1,8 +1,12 @@
 extends Node2D
 
-onready var animation_player = get_node("Rocketship/AnimationPlayer")
-
+# core attributes
 var SPEED = 100
+var VALUE = 0
+var LIFE = 100
+var CAUSING_DAMAGE = 10
+
+onready var animation_player = get_node("Rocketship/AnimationPlayer")
 var has_moved = false
 
 func _ready():
@@ -31,7 +35,6 @@ func _process(delta):
 		global_translate(Vector2(0, -1) * delta * SPEED)
 		set_global_rotation_degrees(0)
 		has_moved = true
-
-		
+	
 	if not has_moved:
 		animation_player.play("Idle")

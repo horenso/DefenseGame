@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/done1.png-68713aa199ab64e27deb182180d925ea.stex"
+path="res://.import/3.png-0541792f988b2cb0af022c784b65d087.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Towers/done1.png"
-dest_files=[ "res://.import/done1.png-68713aa199ab64e27deb182180d925ea.stex" ]
+source_file="res://Art/Legacy/3.png"
+dest_files=[ "res://.import/3.png-0541792f988b2cb0af022c784b65d087.stex" ]
 
 [params]
 

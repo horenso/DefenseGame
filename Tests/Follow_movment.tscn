@@ -3,14 +3,11 @@
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=2]
 
-
-
-
 [node name="Test" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 190, 234 )
+position = Vector2( 86.1513, 61.9746 )
+scale = Vector2( 1, 1 )
 
-[node name="Tower" parent="." instance=ExtResource( 2 )]
-position = Vector2( 442, 399 )
-scale = Vector2( 10, 10 )
+[node name="tower" parent="." instance=ExtResource( 2 )]
+position = Vector2( 28.2316, 75.9356 )
