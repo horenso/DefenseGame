@@ -12,8 +12,9 @@ var DAMAGE = 1
 var fake_rotation = 0
 
 # sprite node, to change the animation frames
-onready var top = get_node("top")
+onready var Top = get_node("Top")
 onready var collision_shape_node = get_node("range/CollisionShape2D")
+onready var top_center_node = get_node("Top_Center")
 
 # list of enemies that the tower sees
 var list_of_enemies = []
@@ -44,52 +45,56 @@ func select_enemy():
 		angle_enemy = 90 + rad2deg(get_angle_to(selected_enemy.position))
 		if angle_enemy < 0:
 			angle_enemy = 360 + angle_enemy
-		fake_rotation = int(floor(angle_enemy / 22.5))
+		fake_rotation = int(round(angle_enemy / 22.5))
+		if fake_rotation == 16:
+			fake_rotation = 0
+		top_center_node.rotation = deg2rad(fake_rotation * 22.5)
+		
 
 # update the towers rotation frames,
 # fake_rotation is value between 0 and 15
 func update_fake_rotation():
 	match fake_rotation:
 		0, 1, 2:
-			top.rotation = 0
-			top.set_frame(fake_rotation)
-			top.set_flip_h(false)
-			top.set_flip_v(false)
+			Top.rotation = 0
+			Top.set_frame(fake_rotation)
+			Top.set_flip_h(false)
+			Top.set_flip_v(false)
 		3:
-			top.rotation = PI*0.5
-			top.set_frame(1)
-			top.set_flip_h(true)
-			top.set_flip_v(false)
+			Top.rotation = PI*0.5
+			Top.set_frame(1)
+			Top.set_flip_h(true)
+			Top.set_flip_v(false)
 		4, 5, 6:
-			top.rotation = PI*0.5
-			top.set_frame(fake_rotation - 4)
-			top.set_flip_h(false)
-			top.set_flip_v(false)
+			Top.rotation = PI*0.5
+			Top.set_frame(fake_rotation - 4)
+			Top.set_flip_h(false)
+			Top.set_flip_v(false)
 		7:
-			top.rotation = PI
-			top.set_frame(1)
-			top.set_flip_h(true)
-			top.set_flip_v(false)
+			Top.rotation = PI
+			Top.set_frame(1)
+			Top.set_flip_h(true)
+			Top.set_flip_v(false)
 		8, 9, 10:
-			top.rotation = 0
-			top.set_frame(fake_rotation - 8)
-			top.set_flip_h(true)
-			top.set_flip_v(true)
+			Top.rotation = 0
+			Top.set_frame(fake_rotation - 8)
+			Top.set_flip_h(true)
+			Top.set_flip_v(true)
 		11:
-			top.rotation = PI*0.5
-			top.set_frame(1)
-			top.set_flip_h(false)
-			top.set_flip_v(true)
+			Top.rotation = PI*0.5
+			Top.set_frame(1)
+			Top.set_flip_h(false)
+			Top.set_flip_v(true)
 		12, 13, 14:
-			top.rotation = PI*0.5
-			top.set_frame(fake_rotation - 12)
-			top.set_flip_h(true)
-			top.set_flip_v(true)
+			Top.rotation = PI*0.5
+			Top.set_frame(fake_rotation - 12)
+			Top.set_flip_h(true)
+			Top.set_flip_v(true)
 		15:
-			top.rotation = 0
-			top.set_frame(1)
-			top.set_flip_h(true)
-			top.set_flip_v(false)
+			Top.rotation = 0
+			Top.set_frame(1)
+			Top.set_flip_h(true)
+			Top.set_flip_v(false)
 
 func _on_range_area_entered(area):
 	list_of_enemies.append(area)

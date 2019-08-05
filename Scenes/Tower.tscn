@@ -9,17 +9,21 @@ radius = 21.9513
 
 [node name="Tower" type="Node2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="background" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="top" type="Sprite" parent="."]
+[node name="Top" type="Sprite" parent="."]
 position = Vector2( 0, -1 )
 texture = ExtResource( 3 )
 hframes = 3
+
+[node name="Top_Center" type="Position2D" parent="."]
+position = Vector2( 0, -1 )
+
+[node name="Muzzle" type="RayCast2D" parent="Top_Center"]
+position = Vector2( 0, -7 )
+rotation = -3.14159
 
 [node name="Label" type="Label" parent="."]
 margin_left = 5.14399
@@ -32,7 +36,6 @@ wait_time = 16.0
 autostart = true
 
 [node name="range" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
 position = Vector2( 0.5, -1.5 )
