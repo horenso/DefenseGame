@@ -6,7 +6,7 @@ var PRICE_TO_BUY = 0
 var RANGE = 30
 var REACTION_TIME = 1
 var SHOOTING_SPEED = 1
-var TURNING_SPEED = 10
+var TURNING_SPEED = 12
 var DAMAGE = 1
 
 var is_selected = false
@@ -52,14 +52,15 @@ func point_at_enemy(delta):
 		return
 
 	angle_enemy = 90 + rad2deg(get_angle_to(selected_enemy.position))
-	if angle_enemy < 0:
-		angle_enemy = 360 + angle_enemy
-		
-	fake_rotation = int(round(angle_enemy / 22.5))
-	if fake_rotation == 16:
-		fake_rotation = 0
-	top_center_node.rotation = deg2rad(fake_rotation * 22.5)
+	var target_dir = (selected_enemy.global_position - global_position).normalized()
+	var current_dir = Vector2(1, 0).rotated($Rotation.global_rotation)
 
+	$Rotation.global_rotation = current_dir.linear_interpolate(target_dir, TURNING_SPEED * delta).angle()
+		
+	fake_rotation = int(round(rad2deg($Rotation.rotation + 0.5*PI) / 22.5))
+	if fake_rotation < 0:
+		fake_rotation = (fake_rotation % 16 + 16) % 16
+	top_center_node.rotation = deg2rad(fake_rotation * 22.5)
 		
 # update the towers rotation frames,
 # fake_rotation is value between 0 and 15
