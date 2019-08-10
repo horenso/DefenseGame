@@ -50,7 +50,6 @@ func select_enemy():
 			fake_rotation = 0
 		top_center_node.rotation = deg2rad(fake_rotation * 22.5)
 		
-
 # update the towers rotation frames,
 # fake_rotation is value between 0 and 15
 func update_fake_rotation():
@@ -98,6 +97,7 @@ func update_fake_rotation():
 
 func _on_range_area_entered(area):
 	list_of_enemies.append(area)
+	print(area)
 
 func _on_range_area_exited(area):
 	list_of_enemies.erase(area)
