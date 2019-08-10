@@ -1,5 +1,8 @@
 extends Node2D
 
+signal died
+signal health_changed
+
 # core attributes
 var SPEED = 100
 var VALUE = 0
@@ -14,6 +17,23 @@ func _ready():
 	animation_player.play("Idle")
 	
 func _process(delta):
+	test_healthbar()
+	test_movement(delta)
+	
+func lose_health(health):
+	LIFE -= health
+	print(LIFE)
+	if LIFE > 0:
+		emit_signal("health_changed", LIFE)
+	else:
+		emit_signal("died", self)
+
+func test_healthbar():
+	if Input.is_action_just_released("Y"):
+		lose_health(10)
+		print("LIFE DEDUCTED")
+		
+func test_movement(delta):
 	has_moved = false
 	if Input.is_action_pressed("ui_left"):
 		animation_player.play("fire")

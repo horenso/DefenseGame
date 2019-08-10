@@ -16,6 +16,7 @@ texture = ExtResource( 3 )
 hframes = 3
 
 [node name="Top_Center" type="Position2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -1 )
 
 [node name="Muzzle" type="RayCast2D" parent="Top_Center"]
@@ -33,6 +34,7 @@ margin_right = 45.144
 margin_bottom = 22.8527
 
 [node name="Range" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -1 )
 input_pickable = false
 collision_layer = 0
