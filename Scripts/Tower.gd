@@ -3,10 +3,12 @@ extends Node2D
 # core attributes
 var UPGRADE_STATE = 0
 var PRICE_TO_BUY = 0
-var RANGE = 10
+var RANGE = 30
 var REACTION_TIME = 1
 var SHOOTING_SPEED = 1
 var DAMAGE = 1
+
+var is_selected = false
 
 # towers rotation, handled by the animation frames
 var fake_rotation = 0
@@ -26,7 +28,9 @@ var selected_enemy = null
 var angle_enemy = 0.0
 
 func _ready():
-	set_process(true)
+	var circle = CircleShape2D.new()
+	$Range/CollisionShape2D.shape = circle
+	$Range/CollisionShape2D.shape.radius = RANGE
 
 func _process(delta):
 	select_enemy()
@@ -97,7 +101,6 @@ func update_fake_rotation():
 
 func _on_range_area_entered(area):
 	list_of_enemies.append(area)
-	print(area)
 
 func _on_range_area_exited(area):
 	list_of_enemies.erase(area)
