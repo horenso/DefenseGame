@@ -6,6 +6,7 @@ var PRICE_TO_BUY = 0
 var RANGE = 30
 var REACTION_TIME = 1
 var SHOOTING_SPEED = 1
+var TURNING_SPEED = 10
 var DAMAGE = 1
 
 var is_selected = false
@@ -27,15 +28,15 @@ var selected_enemy = null
 # angle between selected_enemy and tower
 var angle_enemy = 0.0
 
+var range_circle = CircleShape2D.new()
+
 func _ready():
-	var circle = CircleShape2D.new()
-	$Range/CollisionShape2D.shape = circle
-	$Range/CollisionShape2D.shape.radius = RANGE
+	range_circle.radius = RANGE
+	$Range/CollisionShape2D.shape = range_circle
 
 func _process(delta):
 	select_enemy()
-	if Input.is_action_just_released("Y"):
-		fake_rotation = (fake_rotation + 1) % 16
+	point_at_enemy(delta)
 	update_fake_rotation()
 	get_node("Label").text = str(fake_rotation)
 
@@ -45,14 +46,20 @@ func select_enemy():
 			selected_enemy = list_of_enemies[0]
 	elif not list_of_enemies.has(selected_enemy):
 		selected_enemy = null
-	else:
-		angle_enemy = 90 + rad2deg(get_angle_to(selected_enemy.position))
-		if angle_enemy < 0:
-			angle_enemy = 360 + angle_enemy
-		fake_rotation = int(round(angle_enemy / 22.5))
-		if fake_rotation == 16:
-			fake_rotation = 0
-		top_center_node.rotation = deg2rad(fake_rotation * 22.5)
+
+func point_at_enemy(delta):
+	if selected_enemy == null:
+		return
+
+	angle_enemy = 90 + rad2deg(get_angle_to(selected_enemy.position))
+	if angle_enemy < 0:
+		angle_enemy = 360 + angle_enemy
+		
+	fake_rotation = int(round(angle_enemy / 22.5))
+	if fake_rotation == 16:
+		fake_rotation = 0
+	top_center_node.rotation = deg2rad(fake_rotation * 22.5)
+
 		
 # update the towers rotation frames,
 # fake_rotation is value between 0 and 15
