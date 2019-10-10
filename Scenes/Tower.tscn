@@ -5,7 +5,11 @@
 [ext_resource path="res://Art/Towers/tower_1_top.png" type="Texture" id=3]
 
 [node name="Tower" type="Node2D"]
+position = Vector2( 8, 9 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -16,7 +20,6 @@ texture = ExtResource( 3 )
 hframes = 3
 
 [node name="Top_Center" type="Position2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, -1 )
 
 [node name="Muzzle" type="RayCast2D" parent="Top_Center"]
@@ -25,13 +28,7 @@ rotation = -3.14159
 
 [node name="Rotation" type="Node2D" parent="."]
 position = Vector2( 0, -1 )
-
-[node name="Label" type="Label" parent="."]
-visible = false
-margin_left = 5.14399
-margin_top = 8.85272
-margin_right = 45.144
-margin_bottom = 22.8527
+rotation = -1.5708
 
 [node name="Range" type="Area2D" parent="."]
 editor/display_folded = true

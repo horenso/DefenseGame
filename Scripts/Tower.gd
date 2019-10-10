@@ -16,7 +16,6 @@ var fake_rotation = 0
 
 # sprite node, to change the animation frames
 onready var Top = get_node("Top")
-onready var collision_shape_node = get_node("range/CollisionShape2D")
 onready var top_center_node = get_node("Top_Center")
 
 # list of enemies that the tower sees
@@ -24,9 +23,6 @@ var list_of_enemies = []
 
 # current enemy in gun sight
 var selected_enemy = null
-
-# angle between selected_enemy and tower
-var angle_enemy = 0.0
 
 var range_circle = CircleShape2D.new()
 
@@ -38,7 +34,6 @@ func _process(delta):
 	select_enemy()
 	point_at_enemy(delta)
 	update_fake_rotation()
-	get_node("Label").text = str(fake_rotation)
 
 func select_enemy():
 	if selected_enemy == null:
@@ -51,7 +46,6 @@ func point_at_enemy(delta):
 	if selected_enemy == null:
 		return
 
-	angle_enemy = 90 + rad2deg(get_angle_to(selected_enemy.position))
 	var target_dir = (selected_enemy.global_position - global_position).normalized()
 	var current_dir = Vector2(1, 0).rotated($Rotation.global_rotation)
 

@@ -16,14 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="DefenseGame"
-run/main_scene="res://Tests/Follow_movment.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=192
-window/size/height=108
+window/size/width=288
+window/size/height=162
 window/size/test_width=1000
 window/size/test_height=800
 window/stretch/mode="viewport"
