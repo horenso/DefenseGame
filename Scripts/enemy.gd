@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Enemy
+
 signal died
 signal health_changed
 
@@ -20,7 +22,6 @@ func _process(delta):
 	
 func lose_health(damage):
 	HEALTH -= damage
-	print(HEALTH)
 	if HEALTH > 0:
 		emit_signal("health_changed", HEALTH)
 	else:

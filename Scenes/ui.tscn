@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI.gdns" type="Script" id=1]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 64.0
+margin_bottom = 34.0
+hint_tooltip = "sadfasdf"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 57.0
+margin_bottom = 27.0
+text = "Tower"

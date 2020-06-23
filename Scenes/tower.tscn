@@ -1,22 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Tower.gd" type="Script" id=1]
-[ext_resource path="res://Art/Towers/tower_1_background.png" type="Texture" id=2]
-[ext_resource path="res://Art/Towers/tower_1_top.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/tower.gd" type="Script" id=1]
+[ext_resource path="res://Art/Towers/tower_1_top.png" type="Texture" id=2]
+[ext_resource path="res://Art/Towers/tower_1_background.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/range_visualizer.tres.gd" type="Script" id=4]
 
 [node name="Tower" type="Node2D"]
-position = Vector2( 8, 9 )
+position = Vector2( 8, 8 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Background" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Top" type="Sprite" parent="."]
 position = Vector2( 0, -1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 hframes = 3
 
 [node name="Top_Center" type="Position2D" parent="."]
@@ -25,18 +26,24 @@ position = Vector2( 0, -1 )
 [node name="Muzzle" type="RayCast2D" parent="Top_Center"]
 position = Vector2( 0, -7 )
 rotation = -3.14159
+collision_mask = 0
 
 [node name="Rotation" type="Node2D" parent="."]
 position = Vector2( 0, -1 )
 rotation = -1.5708
 
 [node name="Range" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, -1 )
 input_pickable = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+
+[node name="RangeVisualizer" type="Node2D" parent="Range"]
+script = ExtResource( 4 )
+
+[node name="CoolDown" type="Timer" parent="."]
+one_shot = true
 [connection signal="area_entered" from="Range" to="." method="_on_range_area_entered"]
 [connection signal="area_exited" from="Range" to="." method="_on_range_area_exited"]
